@@ -1,0 +1,5 @@
+Run() {
+    . "${HOME}/root/sys/workflow/script/sh/definalble/os/rpi/get_model_name.sh";
+    GetRpiModelName "$(GetRpiRevision)";
+}
+Run

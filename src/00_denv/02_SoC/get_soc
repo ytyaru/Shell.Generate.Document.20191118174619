@@ -1,0 +1,6 @@
+# https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=188544
+Run() {
+    SOC="$(pinout | grep 'SoC' | grep ':')"
+    echo $SOC | cut -d ':' -f 2 | xargs echo
+}
+Run

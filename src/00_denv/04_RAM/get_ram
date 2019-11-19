@@ -1,0 +1,8 @@
+Run() {
+	local RAM="$(pinout | grep 'RAM' | grep ':')"
+	RAM=$(echo "$RAM" | cut -d ':' -f 2 | xargs echo)
+	local size=`echo "$RAM" | sed -e 's/[^0-9]//g'`
+	local unit=${RAM#$size}
+	echo "${size} ${unit//b/B}"
+}
+Run

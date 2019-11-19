@@ -1,0 +1,48 @@
+Run() {
+#	DIV_SIZE=1000 # なぜか小数点以下が消えてしまうのでリテラルで計算する
+	# `arm_freq=1400`  1400MHz
+	GetCpuMHz() { vcgencmd get_config arm_freq | cut -d '=' -f2; }
+	# $1: 数値, $2: 単位(1,2,3,4,5,6,7)(K,M,G,T,P,E,Z)
+	GetUnit() {
+		local value=$1
+		local unit=$2
+		local unit_value=$((value / 1000))
+#		local unit_value=$((value / DIV_SIZE))
+		let unit++
+		[ 1000 -le $unit_value ] && GetUnit $unit_value $unit || echo "$(CalcFloat $value) $(GetUnitChar $unit)"
+#		[ 1000 -le $unit_value ] && GetUnit $unit_value $unit || echo "$(CalcFloatPy $value 1000) $(GetUnitChar $unit)"
+#		[ 1000 -le $unit_value ] && GetUnit $unit_value $unit || echo "$(CalcFloatPy $value 1000 5) $(GetUnitChar $unit)"
+#		[ $DIV_SIZE -le $unit_value ] && GetUnit $unit_value $unit || echo "$(CalcFloat $value $DIV_SIZE) $(GetUnitChar $unit)"
+	}
+	GetUnitChar() {
+		case $1 in
+		1) echo -n 'K';;
+		2) echo -n 'M';;
+		3) echo -n 'G';;
+		4) echo -n 'T';;
+		5) echo -n 'P';;
+		6) echo -n 'E';;
+		7) echo -n 'Z';;
+		*) echo -n '' ;; 
+		esac
+	}
+	CalcFloat() { local v=$1; echo $v | awk '{printf $1/1000}'; }
+#	CalcFloat() { local v=$1; echo $v | awk '{printf $1/$DIV_SIZE}'; }
+#	CalcFloatPy() { python -c "print ${1}.0/${2}.0"; } # 桁数が制御できない
+	# 改行コードのエスケープが解釈されずエラー……
+#	CalcFloatPy() { python -c "import decimal\nprint decimal.Decimal(${1}.0)/decimal.Decimal(${2}.0)"; }
+#	CalcFloatPy() { python -c "import decimal\ndecimal.getcontext().prec = $3\nprint decimal.Decimal(${1}.0)/decimal.Decimal(${2}.0)"; }
+	# インデントを入れるとPythonで以下エラー……。スペースではエラー。タブならOK。
+	# IndentationError: unexpected indent
+	CalcFloatPy() {
+		local pycode=`cat <<- EOS
+		import decimal
+		decimal.getcontext().prec = ${3:-0}
+		print decimal.Decimal(${1}.0) / decimal.Decimal(${2}.0)
+		EOS
+		`
+		python -c "$pycode"
+	}
+	echo "$(GetUnit $(GetCpuMHz) 2)";
+}
+Run

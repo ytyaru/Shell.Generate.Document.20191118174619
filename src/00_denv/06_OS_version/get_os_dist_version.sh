@@ -5,9 +5,9 @@
 #	local version="$(GetVersionFromDebian)"; [ -n "$version" ] && { echo "$version"; return; };
 #	version="$(GetVersionFromLsb)";          [ -n "$version" ] && { echo "$version"; return; };
 #}
-KernelVersion() { lsb_release -r | cut -f2; }
-KernelCodename() { lsb_release -c | cut -f2; }
+DistributionVersion() { lsb_release -r | cut -f2; }
+DistributionCodename() { lsb_release -c | cut -f2; }
 echo ========= Version ==========
-echo $(KernelVersion)
-echo $(KernelCodename)
+echo $(DistributionVersion)
+echo $(DistributionCodename)
 

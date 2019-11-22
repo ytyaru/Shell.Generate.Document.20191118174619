@@ -3,6 +3,7 @@
     <script src="./getFontSize.js"></script>
     <script src="../01_path/getIconPath.js"></script>
     <script>
+        /*
         function createImg(src, width, height) {
             var img = document.createElement("img");
             img.setAttribute("src", src);
@@ -10,11 +11,26 @@
             img.setAttribute("height", height);
             return img;
         }
+        */
+        function createImg(id, size) {
+            var img = document.createElement("img");
+            img.setAttribute("src", getIconPath(id));
+            img.setAttribute("width", size);
+            img.setAttribute("height", size);
+            img.setAttribute("alt", id);
+            img.setAttribute("title", id);
+            return img;
+        }
         function appendImgToBody() {
             var size = getFontSize();
-            var imgs = [getIconPath('linux'), getIconPath('debian'), getIconPath('raspbian')];
-            imgs.forEach(function(item) {
-                document.body.appendChild(createImg(item, size, size));
+//            var imgs = [getIconPath('linux'), getIconPath('debian'), getIconPath('raspbian')];
+//            imgs.forEach(function(item) {
+//                document.body.appendChild(createImg(item, size, size));
+//            });
+//            var imgs = [createImg('linux', size), createImg('debian', size), createImg('raspbian', size)];
+            var img_ids = ['linux', 'debian', 'raspbian'];
+            img_ids.forEach(function(id) {
+                document.body.appendChild(createImg(id, size));
             });
         }
         window.onload = function() {

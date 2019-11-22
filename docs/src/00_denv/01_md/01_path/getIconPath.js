@@ -1,6 +1,7 @@
 //function getIconDir() { return "./src/00_denv/01_md/00_icon"; }
 //function getIconDir() { return "//src/00_denv/01_md/00_icon"; }
-function getIconDir() { return "/src/00_denv/01_md/00_icon"; } // ドメインからの相対パス短縮記法
+function getProjectName() { return "/Shell.Generate.Document.20191118174619"; } // ドメイン名「https://ytyaru.github.io」の下
+function getIconDir() { return getProjectName() + "/src/00_denv/01_md/00_icon"; } // ドメインからの相対パス短縮記法
 function getIconPath(id) { return getIconDir() + "/" + id.toLowerCase() + ".svg"; } 
 //function getIconPath(id) { return getHomeDir(id.toLowerCase() + ".svg"); } 
 /*

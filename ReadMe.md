@@ -2,6 +2,10 @@
 
 　ドキュメント自動生成スクリプトを作りたい。
 
+# [demo](https://ytyaru.github.io/Shell.Generate.Document.20191118174619/)
+
+* [demo](https://ytyaru.github.io/Shell.Generate.Document.20191118174619/)
+
 # 開発環境
 
 * <time datetime="2019-11-18T17:46:00+0900">2019-11-18</time>

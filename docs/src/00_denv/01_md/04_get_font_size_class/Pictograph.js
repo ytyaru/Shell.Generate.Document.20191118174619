@@ -20,7 +20,7 @@ export class Pictograph {
     toElement() {
         var elm = null;
         var img = document.createElement('img');
-        img.class = "pictograph";
+        img.className = "pictograph";
         img.src = this.__getIconPath(this.Id);
         if (this.Alt) img.alt = this.Alt;
         if (this.Title) img.title = this.Title;

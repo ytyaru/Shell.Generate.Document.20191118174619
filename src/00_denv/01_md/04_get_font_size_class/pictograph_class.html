@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link  rel="stylesheet" type="text/css" href="pictograph.css">
+    <script type="module" src="Pictograph.js"></script>
+    <script>
+        function createImg(id) {
+            var img = document.createElement("img");
+            img.setAttribute("class", "pictograph");
+            img.setAttribute("alt", id);
+            img.setAttribute("title", id);
+            img.setAttribute("src", getIconPath(id));
+            return img;
+        }
+        function appendImgToBody() {
+            ['linux', 'debian', 'raspbian'].forEach(function(id) {
+                document.body.appendChild(createImg(id));
+            });
+        }
+        window.onload = function() {
+            console.log('icon-path: ', getIconPath('linux'));
+            console.log('font-size: ', getFontSize());
+            appendImgToBody();
+        };
+    </script>
+</head>
+<body>
+    <h1>アイコン表示確認</h1>
+    <p></p>
+</body>
+</html>

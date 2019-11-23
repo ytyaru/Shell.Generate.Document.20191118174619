@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link  rel="stylesheet" type="text/css" href="pictograph.css">
+    <script type="module" src="Pictograph.js"></script>
+    <script>
+        function appendImgToBody() {
+            ['linux', 'debian', 'raspbian'].forEach(function(id) {
+                var pict = new Pictograph(id);
+                pict.Alt = id;
+                pict.Title = id;
+                document.body.appendChild(pict.toElement());
+            });
+        }
+        window.onload = function() {
+            console.log('icon-path: ', getIconPath('linux'));
+            console.log('font-size: ', getFontSize());
+            appendImgToBody();
+        };
+    </script>
+</head>
+<body>
+    <h1>アイコン表示確認</h1>
+    <p></p>
+</body>
+</html>

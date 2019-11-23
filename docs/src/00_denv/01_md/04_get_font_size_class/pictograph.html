@@ -4,7 +4,8 @@
     <script type="module" src="Pictograph.js"></script>
     <script>
         function appendImgToBody() {
-            ['linux', 'debian', 'raspbian'].forEach(function(id) {
+            ['linux', 'debian', 'raspbian'].forEach(id => {
+                console.log(id);
                 var pict = new Pictograph(id);
                 pict.Alt = id;
                 pict.Title = id;
@@ -12,8 +13,8 @@
             });
         }
         window.onload = function() {
-            console.log('icon-path: ', getIconPath('linux'));
-            console.log('font-size: ', getFontSize());
+//            console.log('icon-path: ', getIconPath('linux'));
+//            console.log('font-size: ', getFontSize());
             appendImgToBody();
         };
     </script>

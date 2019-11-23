@@ -42,6 +42,6 @@ export class Pictograph {
         throw "Not implement.";
     }
     __getProjectName() { return "/Shell.Generate.Document.20191118174619"; } // ドメイン名「https://ytyaru.github.io」の下
-    __getIconDir() { return __getProjectName() + "/src/00_denv/01_md/00_icon"; } // ドメインからの相対パス短縮記法
-    __getIconPath() { return __getIconDir() + "/" + this.Id.toLowerCase() + ".svg"; } 
+    __getIconDir() { return this.__getProjectName() + "/src/00_denv/01_md/00_icon"; } // ドメインからの相対パス短縮記法
+    __getIconPath() { return this.__getIconDir() + "/" + this.Id.toLowerCase() + ".svg"; } 
 }

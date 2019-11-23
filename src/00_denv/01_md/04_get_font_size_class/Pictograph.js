@@ -1,4 +1,4 @@
-class Pictograph {
+export class Pictograph {
     constructor(id) {
         this.id = id;
         this.alt = "";

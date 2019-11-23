@@ -1,25 +1,21 @@
 <html>
 <head>
     <link  rel="stylesheet" type="text/css" href="pictograph.css">
-    <script src="./getFontSize.js"></script>
-    <script src="../01_path/getIconPath.js"></script>
+    <script type="module" src="Pictograph.js"></script>
     <script>
-        function createImg(id) {
-            var img = document.createElement("img");
-            img.class = "pictograph";
-            img.alt = id;
-            img.title = id;
-            img.src = getIconPath(id);
-            return img;
-        }
         function appendImgToBody() {
-            ['linux', 'debian', 'raspbian'].forEach(function(id) {
-                document.body.appendChild(createImg(id));
+            import { Pictograph } from "./Pictograph.js";
+            ['linux', 'debian', 'raspbian'].forEach(id => {
+                console.log(id);
+                var pict = new Pictograph(id);
+                pict.Alt = id;
+                pict.Title = id;
+                document.body.appendChild(pict.toElement());
             });
         }
         window.onload = function() {
-            console.log('icon-path: ', getIconPath('linux'));
-            console.log('font-size: ', getFontSize());
+//            console.log('icon-path: ', getIconPath('linux'));
+//            console.log('font-size: ', getFontSize());
             appendImgToBody();
         };
     </script>

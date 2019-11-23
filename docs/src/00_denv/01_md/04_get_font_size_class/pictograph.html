@@ -4,6 +4,7 @@
     <script type="module" src="Pictograph.js"></script>
     <script>
         function appendImgToBody() {
+            import { Pictograph } from "./Pictograph.js";
             ['linux', 'debian', 'raspbian'].forEach(id => {
                 console.log(id);
                 var pict = new Pictograph(id);

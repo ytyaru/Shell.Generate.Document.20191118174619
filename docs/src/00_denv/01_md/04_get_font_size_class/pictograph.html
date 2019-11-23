@@ -3,8 +3,8 @@
     <link  rel="stylesheet" type="text/css" href="pictograph.css">
     <script type="module" src="Pictograph.js"></script>
     <script>
+        import { Pictograph } from "./Pictograph.js";
         function appendImgToBody() {
-            import { Pictograph } from "./Pictograph.js";
             ['linux', 'debian', 'raspbian'].forEach(id => {
                 console.log(id);
                 var pict = new Pictograph(id);

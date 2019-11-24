@@ -42,13 +42,7 @@ export class Pictograph {
         throw "Not implement.";
     }
     // ドメインからの相対パス
-//    __getProjectName() { return "/Shell.Generate.Document.20191118174619"; } // ドメイン名「https://ytyaru.github.io」の下
-//    __getIconDir() { return this.__getProjectName() + "/src/00_denv/01_md/00_icon"; } // ドメインからの相対パス短縮記法
-//    __getIconPath() { return this.__getIconDir() + "/" + this.Id.toLowerCase() + ".svg"; } 
-//    __getIconPath() { return "/src/00_denv/01_md/00_icon/" + this.Id.toLowerCase() + ".svg"; } 
-//    __getIconPath() { return document.baseURI + "/src/00_denv/01_md/00_icon/" + this.Id.toLowerCase() + ".svg"; } 
-//    __getIconPath() { console.log('document.baseURI:', document.baseURI); return document.baseURI + "src/00_denv/01_md/00_icon/" + this.Id.toLowerCase() + ".svg"; }
-    __getRepoName() { // https://{user}.github.io/{repo}/
+    __getRepoName() { // https://{user}.github.io/{repo}/...
         console.log('__getRepoName:', window.location.pathname.split('/')[1]);
         return window.location.pathname.split('/')[1];
     }
